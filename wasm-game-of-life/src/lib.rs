@@ -1,5 +1,6 @@
 mod utils;
 
+use std::format;
 use wasm_bindgen::prelude::*;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
@@ -14,6 +15,7 @@ extern {
 }
 
 #[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, {}!");
+pub fn greet(name: &str) {
+    let greeting = format!("Hello, {}!", name);
+    alert(&greeting);
 }
