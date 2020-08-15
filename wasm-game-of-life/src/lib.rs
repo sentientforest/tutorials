@@ -3,6 +3,7 @@ mod utils;
 use std::fmt;
 use std::format;
 use wasm_bindgen::prelude::*;
+use js_sys::Math;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -80,7 +81,7 @@ impl Universe {
 
         let cells = (0..width * height)
           .map(|i| {
-              if i % 2 == 0 || i % 7 == 0 {
+              if Math::random() < 0.5 {
                   Cell::Alive
               } else {
                   Cell::Dead
