@@ -53,17 +53,23 @@ impl Universe {
         count
     }
 
-    pub fn get_cells(&self) -> *const u32 {
-        self.cells.as_slice().as_ptr()
+    pub fn get_cells(&self) -> &FixedBitSet {
+        &self.cells
     }
 
     pub fn set_cells(&mut self, cells: &[(u32, u32)]) {
-        for row in 0..self.height {
-            for col in 0..self.width {
-                let idx = self.get_index(row, col);
-                self.cells.set(idx, true);
-            }
+        let size = (self.width * self.height) as usize;
+        let mut new_cells = FixedBitSet::with_capacity(size);
+
+        for i in 0..size {
+            new_cells.set(i, false);
         }
+
+        for (row, col) in cells.iter().cloned() {
+            let idx = self.get_index(row, col);
+            new_cells.set(idx, true);
+        }
+        self.cells = new_cells;
     }
 }
 
@@ -131,7 +137,6 @@ impl Universe {
 
     pub fn set_width(&mut self, width: u32) {
         self.width = width;
-        self.cells = (0..width * self.height).map(|_i| 0).collect();
     }
     pub fn height(&self) -> u32 {
         self.height
@@ -139,7 +144,6 @@ impl Universe {
 
     pub fn set_height(&mut self, height: u32) {
         self.height = height;
-        self.cells = (0..self.width * height).map(|_i| 0).collect();
     }
 
     pub fn cells(&self) -> *const u32 {
