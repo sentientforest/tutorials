@@ -1,0 +1,40 @@
+{
+  "canisters": {
+    "dfx_hello": {
+      "main": "src/dfx_hello/main.mo",
+      "type": "motoko"
+    },
+    "dfx_hello_assets": {
+      "dependencies": [
+        "dfx_hello"
+      ],
+      "frontend": {
+        "entrypoint": "src/dfx_hello_assets/public/index.js"
+      },
+      "source": [
+        "src/dfx_hello_assets/assets",
+        "dist/dfx_hello_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": ""
+    }
+  },
+  "dfx": "0.6.7",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    },
+    "tungsten": {
+      "providers": [
+        "https://gw.dfinity.network"
+      ],
+      "type": "persistent"
+    }
+  },
+  "version": 1
+}
