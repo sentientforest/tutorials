@@ -14,9 +14,9 @@ actor Calc {
 
     public func clearall() : async Int {
         if (cell: Int != 0) { 
-            cell -= cell; cell 
+          cell -= cell; cell 
         } else {
           cell
-        };
+        }
     };
 }
