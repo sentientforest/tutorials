@@ -1,0 +1,40 @@
+{
+  "canisters": {
+    "calc": {
+      "main": "src/calc/calc_main.mo",
+      "type": "motoko"
+    },
+    "calc_assets": {
+      "dependencies": [
+        "calc"
+      ],
+      "frontend": {
+        "entrypoint": "src/calc_assets/public/index.js"
+      },
+      "source": [
+        "src/calc_assets/assets",
+        "dist/calc_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": ""
+    }
+  },
+  "dfx": "0.6.7",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    },
+    "tungsten": {
+      "providers": [
+        "https://gw.dfinity.network"
+      ],
+      "type": "persistent"
+    }
+  },
+  "version": 1
+}
