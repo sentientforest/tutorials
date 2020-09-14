@@ -1,0 +1,40 @@
+{
+  "canisters": {
+    "custom_greeting": {
+      "main": "src/custom_greeting/main.mo",
+      "type": "motoko"
+    },
+    "custom_greeting_assets": {
+      "dependencies": [
+        "custom_greeting"
+      ],
+      "frontend": {
+        "entrypoint": "src/custom_greeting_assets/public/index.jsx"
+      },
+      "source": [
+        "src/custom_greeting_assets/assets",
+        "dist/custom_greeting_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": ""
+    }
+  },
+  "dfx": "0.6.7",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    },
+    "tungsten": {
+      "providers": [
+        "https://gw.dfinity.network"
+      ],
+      "type": "persistent"
+    }
+  },
+  "version": 1
+}
