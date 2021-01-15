@@ -1,0 +1,11 @@
+[package]
+name = "actix-web-tutorial"
+version = "0.1.0"
+authors = ["Michael Graham <michael@forested.earth>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "3"
+
